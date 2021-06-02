@@ -1,18 +1,16 @@
-import { useSelector } from "react-redux";
-import Header from "./components/Header";
-import Auth from "./components/Auth";
-import Counter from "./components/Counter";
-import UserProfile from "./components/UserProfile";
+import { Route } from "react-router-dom";
+import Welcome from "./pages/Welcome";
+import AccessPage from "./pages/AccessPage";
+import MainHeader from "./components/MainHeader";
 
 function App() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
   return (
     <>
-      <Header />
-      {!isAuthenticated && <Auth />}
-      {isAuthenticated && <UserProfile />}
-      <Counter />
+      <MainHeader />
+      <main>
+        <Route path="/welcome" component={Welcome} />
+        <Route path="/accesspage" component={AccessPage} />
+      </main>
     </>
   );
 }
